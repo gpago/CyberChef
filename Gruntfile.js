@@ -32,6 +32,13 @@ module.exports = function (grunt) {
             "copy:standalone", "zip:standalone", "clean:standalone", "exec:calcDownloadHash", "chmod"
         ]);
 
+    grunt.registerTask("prod-cf",
+        "Creates a production-ready build. Use the --msg flag to add a compile message.",
+        [
+            "eslint", "clean:prod", "clean:config", "exec:generateConfig", "findModules", "webpack:web",
+            "copy:standalone", "chmod"
+        ]);
+
     grunt.registerTask("node",
         "Compiles CyberChef into a single NodeJS module.",
         [
